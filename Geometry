@@ -1,0 +1,118 @@
+local h = Instance.new("ScreenGui")
+local Main = Instance.new("ImageLabel")
+local Top = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local TextBox1 = Instance.new("TextBox")
+local TextBox2 = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+
+h.Name = "h"
+h.Parent = game:GetService("CoreGui")
+h.ResetOnSpawn = false
+
+Main.Name = "Main"
+Main.Parent = h
+Main.Active = true
+Main.Draggable = true
+Main.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.3, 0, 0.3, 0)
+Main.Size = UDim2.new(0, 300, 0, 160)
+Main.Image = "rbxassetid://16336200609"
+
+Top.Name = "Top"
+Top.Parent = Main
+Top.BackgroundColor3 = Color3.fromRGB(0, 90, 0)
+Top.BorderSizePixel = 0
+Top.Size = UDim2.new(1, 0, 0, 30)
+
+Title.Name = "Title"
+Title.Parent = Top
+Title.BackgroundColor3 = Color3.fromRGB(0, 60, 0)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0, 0, 0.295454562, 0)
+Title.Size = UDim2.new(1, 0, 1, 0)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Tool Angles Gui"
+Title.TextColor3 = Color3.fromRGB(0, 255, 0)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+TextBox.Parent = Main
+TextBox.BackgroundColor3 = Color3.fromRGB(0, 99, 0)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.1, 0, 0.3, 0)
+TextBox.Size = UDim2.new(0.2, 0, 0.3, 0)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.PlaceholderText = "Forward"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(0, 255, 20)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.MultiLine = false
+TextBox.ClearTextOnFocus = true
+TextBox.TextWrapped = true
+
+TextBox1.Parent = Main
+TextBox1.BackgroundColor3 = Color3.fromRGB(0, 99, 0)
+TextBox1.BorderSizePixel = 0
+TextBox1.Position = UDim2.new(0.4, 0, 0.3, 0)
+TextBox1.Size = UDim2.new(0.2, 0, 0.3, 0)
+TextBox1.Font = Enum.Font.SourceSans
+TextBox1.PlaceholderText = "Radian"
+TextBox1.Text = ""
+TextBox1.TextColor3 = Color3.fromRGB(0, 255, 20)
+TextBox1.TextScaled = true
+TextBox1.TextSize = 14.000
+TextBox1.MultiLine = false
+TextBox1.ClearTextOnFocus = true
+TextBox1.TextWrapped = true
+
+TextBox2.Parent = Main
+TextBox2.BackgroundColor3 = Color3.fromRGB(0, 99, 0)
+TextBox2.BorderSizePixel = 0
+TextBox2.Position = UDim2.new(0.7, 0, 0.3, 0)
+TextBox2.Size = UDim2.new(0.2, 0, 0.3, 0)
+TextBox2.Font = Enum.Font.SourceSans
+TextBox2.PlaceholderText = "Horizontally"
+TextBox2.Text = ""
+TextBox2.TextColor3 = Color3.fromRGB(0, 255, 20)
+TextBox2.TextScaled = true
+TextBox2.TextSize = 14.000
+TextBox2.MultiLine = false
+TextBox2.ClearTextOnFocus = true
+TextBox2.TextWrapped = true
+
+TextButton.Parent = Main
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 99, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.16, 0, 0.67, 0)
+TextButton.Size = UDim2.new(0.7, 0, 0.22, 0)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Put angles"
+TextButton.TextColor3 = Color3.fromRGB(0, 255, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+TextButton.MouseButton1Click:Connect(function()
+    local player = game.Players.LocalPlayer
+  for _, tool in ipairs(player.Backpack:GetChildren()) do
+    if tool:IsA("Tool") then
+  tool.Grip = CFrame.Angles(TextBox.Text, math.rad(TextBox1.Text), TextBox2.Text)
+     end
+end
+end)
+
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 36, 0, 37)
+closeButton.Position = UDim2.new(0.5, 113, 0.5, -79)
+closeButton.BackgroundColor3 = Color3.new(0.8, 0, 0)
+closeButton.Text = "X"
+closeButton.TextColor3 = Color3.new(1, 1, 1)
+closeButton.Parent = Main
+closeButton.MouseButton1Click:Connect(function()
+h:Destroy()
+end)
